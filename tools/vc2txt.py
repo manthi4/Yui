@@ -1,16 +1,17 @@
-from RealtimeSTT import AudioToTextRecorder as STTRecorder
-
-class Ear():
-    def init():
-        
-    def get_input():
-        with STTRecorder(model = 'tiny.en') as recorder:
-            return recorder.text()
+# from RealtimeSTT import AudioToTextRecorder as STTRecorder
 
 
-def main():
-    with STTRecorder(model = 'tiny.en') as recorder:
-        print(recorder.text())
+# class Ear():
+#     def init():
 
-if __name__ == '__main__':
-    main()
+#     def get_input():
+#         with STTRecorder(model = 'tiny.en') as recorder:
+#             return recorder.text()
+
+
+# def main():
+#     with STTRecorder(model = 'tiny.en') as recorder:
+#         print(recorder.text())
+
+# if __name__ == '__main__':
+#     main()

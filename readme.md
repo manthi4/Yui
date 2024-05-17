@@ -2,10 +2,13 @@
 * **Blocks:**  YUI will be made of "blocks" that are connected together to make a graph (at first we will target chains, then DAGs, then cyclic graphs (with limited cycles)). **Each block defines the following:**
 
    * The inputs it expects including what type they will be.
-   * A prompt template
-   * How those inputs will be integrated into that prompt template
    * Expected output, including output type and any assertions such as maximum output length, etc.
       * In the future this will probably include an output parser.
+
+* **LLMBLocks:** An important type of block. These also define the following:
+   * The llm to be used
+   * A prompt template
+   * How the inputs will be integrated into the prompt template
 
 * **Prompt registry:** All prompts come from a prompt registry.
    * We enforce that prompt objects should be tied to a specific llm. If we want to use the same type of prompt for another llm, then create a new prompt subclass for that and use it.
@@ -82,3 +85,10 @@ Faster Whisper, WhisperCPP, and WhisperX seem most promising. Will try using Rea
    * Faster whisper, uses CTranslate2 to speed up transformer architecture
 * https://github.com/m-bain/whisperX
    * WhisperX - Faster Whisper under the hood with efficient batch
+
+## Development things
+* I would like to use per-commit while developing
+Details: https://pre-commit.com/
+* I would like to stick with google style docstrings
+   * Recommended vscode extensions:
+      * autoDocstring

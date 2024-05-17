@@ -1,46 +1,37 @@
-from chat_history import ChatHistory
+from abc import ABC, abstractmethod
+from typing import NewType
+
+from Yui_core.Yui_IO import YuiInput
+
+LlmID = NewType("LlmID", str)
 
 
-class YuiPrompt:
-    ###TODO: make this a abc class or pydantic object
-    def compile(example_input: str):
-        compiled_prompt = f"example prompt {example_input}"
-        return compiled_prompt
+class YuiPrompt(ABC):
+    """An abstract method for prompts
 
+    Each prompt should only target one specific llm.
+    Prompts are inherently tied to the llm and task
+    so users are encouraged to make custom prompts
+    """
 
-############# Example prompt
-class ReactPrompt(YuiPrompt):
-
-    def __init__(self, llm: str):
-        self.target_llm = (
-            "gpt-3"  ### TODO: how to properly instantiate hard coded class variable
-        )
+    def __init__(self, llm: LlmID):
+        """Initialize prompt"""
         assert llm == self.target_llm
 
-    def compile(self, chat_history: ChatHistory, agent_scratchpad: str, tools: list):
+    @property
+    @abstractmethod
+    def target_llm(self) -> LlmID:
+        """Define which llm this prompt targets"""
+        pass
 
-        tool_desciptions = ""
-        for tool in tools:
-            tool_desciptions += f"{tool.description}\n"
-        compiled_prompt = f"""system: 
-                You are a friendly assistant that is constantly learning. You speak curtly and have wisdom.
-                Answer the following questions as best you can. You have access to the following tools:
+    @abstractmethod
+    def compile(self, inputs: list[YuiInput]) -> str:
+        """Encorporate inputs into the prompt
 
-                {tool_desciptions}
-                Use the following format:
+        Args:
+            inputs (list[YuiInput]): The prompt's inputs
 
-                Request: the input request you must answer
-                Thought: you should always think about what to do
-                Action: the action to take, should be to use of the tools
-                Action Input: the input to the action
-                Observation: the result of the actions
-                ... (this Thought/Action/Action Input/Observation can repeat N times)
-                Thought: I have responded to the request
-                Final Answer: the final response to the original input
-                Begin!
-                
-                {chat_history}
-
-                {agent_scratchpad}
-                """
-        return compiled_prompt
+        Returns:
+            str: the compiled prompt
+        """
+        pass
