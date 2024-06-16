@@ -1,0 +1,9 @@
+pre-commit
+
+openai
+langchain
+langfuse
+google-api-python-client
+arxiv
+
+llama-index

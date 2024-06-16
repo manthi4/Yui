@@ -1,8 +1,18 @@
+## Fireworks.ai
+* Used for the grammar capability:
+   * https://readme.fireworks.ai/docs/structured-output-grammar-based
+
+## LangFuse
+* Used for prompt registry and tracing
+* https://langfuse.com/docs/deployment/local
+
 * python version: 3.10.8
-* `pip install openai`
-* `pip install langchain`
-* `pip install google-api-python-client`
-* `pip install arxiv`
+
+* dependencies in requirements.in
+   * Use uv (https://github.com/astral-sh/uv)
+
+      uv pip compile requirements.in -o requirements.txt
+      uv pip sync requirements.txt
 
 ### Voice 2 text projects
 Faster Whisper, WhisperCPP, and WhisperX seem most promising. Will try using RealtimeSTT first, since it should be a readily packaged accessible version of faster Whisper. Otherwise will try forking it and encorporating faster/accurate sp2txt model.
