@@ -4,3 +4,5 @@ workspaces*
 *env*
 *key*
 *.log
+*requirements.txt
+*langfuse*

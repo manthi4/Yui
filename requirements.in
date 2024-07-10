@@ -5,5 +5,9 @@ langchain
 langfuse
 google-api-python-client
 arxiv
+pydantic
 
 llama-index
+llama-index-llms-fireworks
+llama-index-llms-openai
+llama-index-agent-openai
